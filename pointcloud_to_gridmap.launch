@@ -1,0 +1,15 @@
+<launch>
+  <include file="$(find ros_passthrough)/launch/passthrough.launch"/>
+  <include file="$(find cloud_to_map)/launch/cloud_to_map.launch"/>
+
+  <!--<node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure"></node>-->
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_velodyne_tf_broadcaster" args="0 0 0 0 0 0 map world" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find cloud_to_map)/rviz/cloud_to_map.rviz" required="true" />
+</launch>
+
+
+
+  <!--if(pcl::io::loadPCDFile<pcl::PointXYZ>("/home/robot/Desktop/cloudto2dmap/1.pcd",*cloudIn) == -1)-->
+
+  <!--source devel/setup.bash    运行本地的 map saver!!!!  地图填充功能  需要根据具体地图修改腐蚀 核-->
